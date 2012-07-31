@@ -338,7 +338,7 @@ Function ShowLoading()
     SetFont gFonts(FNT_SETUP)
     Color 255, 255, 0
     CenterText 400, 260, GetText("loading")
-    Box 299, 299, 202, 22, OFF
+    Box 299, 298, 201, 22, OFF
     pr# = gLoadedItems / totalItems * 100.0
     Color 0, 255, 0
     Box 300, 300, pr * 2, 20, ON

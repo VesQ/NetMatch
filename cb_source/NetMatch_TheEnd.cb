@@ -10,7 +10,7 @@ Function cbeShowConsole(visibleOrNot)
 EndFunction
 
 Function smooth#(_new#,_old#,_smooth#) // FPS-independent CurveValue replacement
-    Return _old + PxPerSec((_new - _old) * (1.0 / _smooth)) * 30
+    Return _old + PxPerSec((_new - _old) * (1.0 / _smooth)) * 32
 EndFunction
 
 cbeShowConsole(1)
