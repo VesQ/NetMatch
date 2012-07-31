@@ -644,7 +644,7 @@ Function UpdateExplodeAnimation()
         If expl\frame >= expl\frames Then
             Delete expl
         Else
-            DrawImageBox gImages(expl\img), expl\x - (expl\w / 2), -expl\y - (expl\h / 2), expl\w * expl\frame, 0, expl\w, expl\h
+            DrawImageBox gImages(expl\img), expl\x - (expl\w / 2), expl\y + (expl\h / 2), expl\w * expl\frame, 0, expl\w, expl\h
             If expl\tStamp + 50 < Timer() Then 
                 expl\frame = expl\frame + 1
                 expl\tStamp = Timer()

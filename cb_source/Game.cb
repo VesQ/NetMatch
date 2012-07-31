@@ -211,8 +211,8 @@ Function GameUpdate()
                 // Jos t‰m‰ ei ole oma pelaaja
                 If player\playerId <> gCurrentPlayerId Then
                     // Siirret‰‰n pehme‰sti kohti palvelimelta saatuja koordinaatteja.
-                    nx# = CurveValue(player\x, ObjectX(player\obj), 4)
-                    ny# = CurveValue(player\y, ObjectY(player\obj), 4)
+                    nx# = smooth(player\x, ObjectX(player\obj), 4)
+                    ny# = smooth(player\y, ObjectY(player\obj), 4)
                     PositionObject player\obj, nx, ny
                     RotateObject player\obj, player\angle
                 Else
@@ -1043,7 +1043,7 @@ Function DrawGameStatus()
                         EndIf
                     EndIf
                     Text x - twh, y + 29, player\name
-                    DrawImage gImages(IMG_HEALTHBAR), x - 21, -y + 20 + 10
+                    DrawImage gImages(IMG_HEALTHBAR), x - 21, y - 30
                     w = (100 - player\health) / 2.5
                     x = x + 20 - w
                     Color 16, 16, 16

@@ -3,6 +3,18 @@
 //
 // P‰‰ohjelma
 //********************************************************************************
+
+Function cbeShowConsole(visibleOrNot)
+    group = 1
+    funcId = 12
+EndFunction
+
+Function smooth#(_new#,_old#,_smooth#) // FPS-independent CurveValue replacement
+    Return _old + PxPerSec((_new - _old) * (1.0 / _smooth)) * 30
+EndFunction
+
+cbeShowConsole(1)
+
 Global gFullScreen, gDirectServer, gDirectReg, gForceUpdate, gForceUpdateMsg$
 gFullScreen = False
 gDirectServer = False
@@ -28,7 +40,7 @@ EndIf
 SAFEEXIT OFF
 
 Const NM_VERSION$   = "2.5"
-Const NM_REVISION$  = "a"
+Const NM_REVISION$  = ""
 // Jos palvelinta ei tarvitse p‰ivitt‰‰ muutosten yhteydess‰, nostetaan vain NM_PATCH
 // muuttujan arvoa. T‰m‰ nollataan aina kun tulee uusi revision tai versio.
 Const NM_PATCH      = 0
