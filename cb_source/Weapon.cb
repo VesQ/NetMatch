@@ -343,8 +343,16 @@ EndFunction
 // Siirret‰‰n ammuksia
 //================================================================================
 Function MoveBullets()
-    // K‰yd‰‰n kaikki ammukset l‰pi
+    player.PLAYERS = ConvertToType(gPlayers(gCurrentPlayerId))
+    
+    // K‰yd‰‰n kaikki ammukset l‰pi   
     For bullet.BULLETS = Each BULLETS
+        BulletVisible = ObjectSight(bullet\obj, player\obj)
+        If BulletVisible Then 
+            ShowObject bullet\obj, True
+        Else
+            ShowObject bullet\obj, False
+        EndIf
         // Nopeus riippuu siit‰ mill‰ aseella se on ammuttu
         speed = aWeapon(bullet\weapon, WPNF_BULLETSPEED)
         If bullet\moved = False Then
@@ -352,7 +360,7 @@ Function MoveBullets()
             speed = 0
         EndIf
         // Jos ammus on ammuttu singolla niin tehd‰‰n savuvana
-        If gGameMode = CLIENT And bullet\weapon = WPN_BAZOOKA Then
+        If gGameMode = CLIENT And bullet\weapon = WPN_BAZOOKA And BulletVisible Then
             If InScreen(ObjectX(bullet\obj), ObjectY(bullet\obj), 100) = True Then
                 expl.EXPL_ANIMS = New(EXPL_ANIMS)
                 expl\x      = ObjectX(bullet\obj)
@@ -406,7 +414,7 @@ Function MoveBullets()
             If gGameMode = CLIENT Then
                 PlayGameSound(aWeapon(bullet\weapon, WPNF_HITSOUND), bx, by)
                 // Jos ammus oli singosta niin luodaan r‰j‰hdysanimaatio
-                If bullet\weapon = WPN_BAZOOKA Or bullet\weapon = WPN_LAUNCHER Then
+                If (bullet\weapon = WPN_BAZOOKA Or bullet\weapon = WPN_LAUNCHER) And BulletVisible Then
                     If InScreen(bx, by, 200) = True Then
                         expl.EXPL_ANIMS = New(EXPL_ANIMS)
                         expl\x      = bx
@@ -418,7 +426,7 @@ Function MoveBullets()
                         expl\w      = 128
                         expl\h      = 128
                     EndIf
-                Else
+                ElseIf BulletVisible Then
                     // Kipinˆinti sein‰lle jos ammus on jostain muusta kuin singosta
                     Sparking(bx, by)
                 EndIf
