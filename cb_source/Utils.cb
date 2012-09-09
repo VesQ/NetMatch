@@ -364,4 +364,11 @@ Function Input2$(datmem,txt$,x,y)
     PokeInt datmem,14,delay
     PokeByte datmem,18,del
     Return txt
+EndFunction
+
+//--------------------------------------------------------------------------------
+// FPS-riippumaton CurveValue
+//--------------------------------------------------------------------------------
+Function smooth#(_new#,_old#,_smooth#)
+    Return _old + PxPerSec((_new - _old) * (1.0 / _smooth)) * 32
 EndFunction 

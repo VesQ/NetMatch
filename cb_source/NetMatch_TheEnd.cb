@@ -4,23 +4,14 @@
 // P‰‰ohjelma
 //********************************************************************************
 
-Function cbeShowConsole(visibleOrNot)
-    group = 1
-    funcId = 12
-EndFunction
-
-Function smooth#(_new#,_old#,_smooth#) // FPS-independent CurveValue replacement
-    Return _old + PxPerSec((_new - _old) * (1.0 / _smooth)) * 32
-EndFunction
-
-cbeShowConsole(1)
-
 Global gFullScreen, gDirectServer, gDirectReg, gForceUpdate, gForceUpdateMsg$
 gFullScreen = False
 gDirectServer = False
 gDirectReg = False
 gForceUpdate = False
 gForceUpdateMsg = ""
+
+cbeShowConsole(ON)
 
 cmdLine$ = CommandLine()
 For i = 1 To CountWords(cmdLine)
@@ -81,6 +72,7 @@ Include "Log.cb"
 Include "Server.cb"
 Include "Console.cb"
 Include "DebugDrawing.cb"
+Include "cbeFunctions.cb"
 
 //gDebug = SERVER
 
