@@ -1,0 +1,12 @@
+//********************************************************************************
+// cbeFunctions.cb
+//
+// cbE Custom Functions
+//********************************************************************************
+
+Const CBE_CUSTOM_FUNCTION_GROUP = 1
+
+Function cbeShowConsole(visibleOrNot)
+    group = CBE_CUSTOM_FUNCTION_GROUP
+    funcId = 12
+EndFunction

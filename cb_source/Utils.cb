@@ -199,10 +199,12 @@ Function MakeDirs( _path$ )
 EndFunction
 
 //================================================================================
-// Pyöristää liukuluvun annetulle tarkuudelle
+// Pyöristää liukuluvun annetulle tarkuudelle. cbE:n desimaalien epätarkkuuden
+// vuoksi pitää palauttaa merkkijonona eikä tämä pyöristä täysin oikein.
 //================================================================================
-Function Round#(n#, decimals)
-    Return Float(Int(n*10^decimals)/10.0^decimals)
+Function Round$(n#, decimals)
+    rs$ = Str(Int(n * 10 ^ decimals) / 10.0 ^ decimals)
+    Return Left(rs$, InStr(rs, ".") + decimals)
 End Function
 
 //==================================================================
@@ -364,4 +366,11 @@ Function Input2$(datmem,txt$,x,y)
     PokeInt datmem,14,delay
     PokeByte datmem,18,del
     Return txt
+EndFunction
+
+//--------------------------------------------------------------------------------
+// FPS-riippumaton CurveValue
+//--------------------------------------------------------------------------------
+Function smooth#(_new#,_old#,_smooth#)
+    Return _old + PxPerSec((_new - _old) * (1.0 / _smooth)) * 32
 EndFunction 

@@ -612,6 +612,7 @@ Function DrawMenu(_menu)
             
            EndIf
             ClearKeys
+            ClearMouse
             UpdateGame
             
         ElseIf _menu = MNU_SERVERLIST Then

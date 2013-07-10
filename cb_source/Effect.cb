@@ -244,15 +244,15 @@ EndFunction
 
 Function UpdateBodyExplosion()
     For bexpl.BODY_EXPLOSION = Each BODY_EXPLOSION
-        x# = CurveValue(bexpl\destX, ObjectX(bexpl\obj), 5)
-        y# = CurveValue(bexpl\destY, ObjectY(bexpl\obj), 5)
+        x# = smooth(bexpl\destX, ObjectX(bexpl\obj), 5)
+        y# = smooth(bexpl\destY, ObjectY(bexpl\obj), 5)
         moveX# = x - ObjectX(bexpl\obj)
         moveY# = y - ObjectY(bexpl\obj)
         TranslateObject bexpl\obj, moveX, moveY
         //PositionObject bexpl\obj, x, y
         a# = CurveAngle(bexpl\destA, ObjectAngle(bexpl\obj), 5)
         RotateObject bexpl\obj, a
-        bexpl\bloodVol = CurveValue(0, bexpl\bloodVol, 10)
+        bexpl\bloodVol = smooth(0, bexpl\bloodVol, 10)
         If bexpl\tStamp + bexpl\bloodDelay > Timer() Then
             Blood(ObjectX(bexpl\obj), ObjectY(bexpl\obj), bexpl\bloodVol, a, 20)
         EndIf

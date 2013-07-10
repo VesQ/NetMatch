@@ -314,8 +314,8 @@ Function ClientLoop()
                     If KeyDown(cbKeyA) Then MoveObject obj, 0, -PxPerSec(SIDESTEP_SPEED) * 100.0 / aWeapon( player\weapon, WPNF_WEIGHT )
                     If KeyDown(cbKeyD) Then MoveObject obj, 0, PxPerSec(SIDESTEP_SPEED) * 100.0 / aWeapon( player\weapon, WPNF_WEIGHT )
                 ElseIf gControlMode = 2 Then
-                    moveX = 0
-                    moveY = 0
+                    moveX# = 0
+                    moveY# = 0
                     If KeyDown(cbKeyW) Then moveY = PxPerSec(FORWARD_SPEED) * 100.0 / aWeapon( player\weapon, WPNF_WEIGHT )
                     If KeyDown(cbKeyS) Then moveY = -PxPerSec(FORWARD_SPEED) * 100.0 / aWeapon( player\weapon, WPNF_WEIGHT )
                     If KeyDown(cbKeyA) Then moveX = -PxPerSec(FORWARD_SPEED) * 100.0 / aWeapon( player\weapon, WPNF_WEIGHT )
