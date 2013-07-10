@@ -199,10 +199,12 @@ Function MakeDirs( _path$ )
 EndFunction
 
 //================================================================================
-// Pyöristää liukuluvun annetulle tarkuudelle
+// Pyöristää liukuluvun annetulle tarkuudelle. cbE:n desimaalien epätarkkuuden
+// vuoksi pitää palauttaa merkkijonona eikä tämä pyöristä täysin oikein.
 //================================================================================
-Function Round#(n#, decimals)
-    Return Float(Int(n*10^decimals)/10.0^decimals)
+Function Round$(n#, decimals)
+    rs$ = Str(Int(n * 10 ^ decimals) / 10.0 ^ decimals)
+    Return Left(rs$, InStr(rs, ".") + decimals)
 End Function
 
 //==================================================================

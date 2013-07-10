@@ -930,7 +930,8 @@ Function DrawGameStatus()
             Text tx + 80 + (gSessionComplete * 100), ty, gKillsTitle
             Color 255, 0, 0
             Text tx + 130 + (gSessionComplete * 140), ty, gDeathsTitle
-            //Text tx + 200, ty, "%"
+            Color 255, 255, 0
+            Text tx + 200 + (gSessionComplete * 180), ty, "K/D"
             ty = ty + th * 1.5
             redTeamKills = 0
             redTeamDeaths = 0
@@ -969,7 +970,7 @@ Function DrawGameStatus()
                     Color 255, 0, 0
                     Text tx + 130 + (gSessionComplete * 140), ty, player\deaths
                     Color 255, 255, 0
-                    Text tx + 200 + (gSessionComplete * 180), ty, player\killRatio
+                    Text tx + 200 + (gSessionComplete * 180), ty, Round(player\killRatio, 2)
                     ty = ty + th
                 EndIf
             Next i
